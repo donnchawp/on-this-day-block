@@ -18,6 +18,7 @@ class OnThisDayBlock {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_block' ) );
+		add_shortcode( 'on-this-day', array( $this, 'handle_shortcode' ) );
 	}
 
 	/**
@@ -140,6 +141,10 @@ class OnThisDayBlock {
 					$output .= '<div class="otd-thumbnail">';
 					$output .= '<a href="' . esc_url( get_permalink() ) . '"><img src="' . esc_url( $matches[1] ) . '" alt="" class="wp-post-image" /></a>';
 					$output .= '</div>';
+				} else {
+					$output .= '<div class="otd-thumbnail">';
+					$output .= substr( strip_tags( get_the_content() ), 0, 50 );
+					$output .= '</div>';
 				}
 			}
 			$output .= '<div class="otd-post-content">';
@@ -157,6 +162,28 @@ class OnThisDayBlock {
 		$output .= '</div>';
 
 		return $output;
+	}
+
+	/**
+	 * Handle the [on-this-day] shortcode
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return string HTML output for the shortcode.
+	 */
+	public function handle_shortcode( $atts ) {
+		// Ensure scripts and styles are enqueued
+		wp_enqueue_style( 'otd-block-style' );
+		wp_enqueue_script( 'otd-carousel-script' );
+
+		// Convert shortcode attributes to block attributes format
+		$attributes = shortcode_atts(
+			array(
+				'align' => '',
+			),
+			$atts
+		);
+
+		return $this->render_block( $attributes );
 	}
 
 	/**
