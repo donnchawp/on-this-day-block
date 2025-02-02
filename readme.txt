@@ -23,12 +23,16 @@ Features:
 * Responsive design
 * Customizable alignment and spacing
 * Support for custom CSS classes
+* Available as a Gutenberg block, shortcode, or widget
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/on-this-day-block` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the block editor to add the 'On This Day' block to any post or page
+3. You can use the plugin in three ways:
+   * Block Editor: Add the 'On This Day' block to any post or page
+   * Shortcode: Use `[on-this-day]` in any post, page, or text widget
+   * Widget: Add the 'On This Day' widget through the WordPress widget screen
 
 == Frequently Asked Questions ==
 
@@ -36,9 +40,13 @@ Features:
 
 The plugin displays posts from your blog that were published on the same month and day as today, excluding posts from the current year.
 
+= How do I use the shortcode? =
+
+Simply insert `[on-this-day]` anywhere you want the historical posts to appear. You can customize it with parameters like `[on-this-day posts="5"]` to show 5 posts.
+
 = Can I customize the appearance of the block? =
 
-Yes, the block supports WordPress's built-in alignment and spacing controls. You can also add custom CSS classes for additional styling.
+Yes, the block, shortcode, and widget all support WordPress's built-in alignment and spacing controls. You can also add custom CSS classes for additional styling.
 
 = Does it work with any theme? =
 
